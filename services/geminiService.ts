@@ -83,8 +83,11 @@ const feedbackSchema: Schema = {
 // --- API CLIENT & UTILS ---
 
 const getAiClient = () => {
-  const apiKey = process.env.API_KEY;
-  if (!apiKey) throw new Error("API Key is missing");
+  const apiKey = import.meta.env.GEMINI_API_KEY || import.meta.env.VITE_GEMINI_API_KEY || "";
+  if (!apiKey) {
+    console.error("API Key Error: 키를 찾을 수 없습니다. Vercel 설정을 확인하세요.");
+    throw new Error("API Key is missing");
+  }
   return new GoogleGenAI({ apiKey });
 };
 
