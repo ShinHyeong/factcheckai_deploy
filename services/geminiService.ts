@@ -185,7 +185,7 @@ export const analyzeCandidate = async (
 
   return callWithRetry(async () => {
     const response = await ai.models.generateContent({
-      model: 'gemini-1.5-flash-002',
+      model: 'gemini-2.5-flash-lite',
       contents: prompt,
       config: {
         responseMimeType: "application/json",
@@ -242,7 +242,7 @@ export const chatWithInterviewer = async (
 
   return callWithRetry(async () => {
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-2.5-flash-lite',
       contents: contents,
     });
 
@@ -283,7 +283,7 @@ export const getInterviewFeedback = async (
 
   return callWithRetry(async () => {
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-2.5-flash-lite',
       contents: prompt,
       config: {
         responseMimeType: "application/json",
